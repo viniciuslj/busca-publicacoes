@@ -1,0 +1,28 @@
+{
+  "login": {
+    "title": "Autenticação",
+    "form": {
+      "password": "Senha",
+      "password.placeholder": "Sua senha",
+      "rememberme": "Manter-me logado",
+      "button": "Entrar",
+      "keepSession": "Manter sessão",
+      "restartSession": "Reiniciar sessão"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Autenticação inválida!</strong> Não foi possível acessar o sistema.",
+        "token": {
+          "invalid": "Token inválido",
+          "expired": "Token expirado"
+        }
+      },
+      "info": {
+        "authenticating": "Autenticando acesso..."
+      }
+    },
+    "password": {
+      "forgot": "Esqueceu sua senha?"
+    }
+  }
+}

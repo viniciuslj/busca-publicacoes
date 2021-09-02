@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="sbpApp.documento.home.title"></span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-documento" [routerLink]="['/documento/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" jhiTranslate="entity.action.new"></span>
+        </button>
+
+        <button class="btn btn-secondary float-right mr-2" [routerLink]="['/documento/batch']">
+            <fa-icon [icon]="'folder'"></fa-icon>
+            <span class="hidden-sm-down" jhiTranslate="sbpApp.documento.batch"></span>
+        </button>
+
+    </h2>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch"
+                        placeholder="{{ 'global.form.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br/>
+    <div class="table-responsive" *ngIf="documentos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="diretorio.nome"><span jhiTranslate="sbpApp.documento.diretorio">Diretorio</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="dataPublicacao"><span jhiTranslate="sbpApp.documento.anoPublicacao">Ano</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="nome"><span jhiTranslate="sbpApp.documento.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="quantidadePaginas"><span jhiTranslate="sbpApp.documento.quantidadePaginas">Quantidade Paginas</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="dataPublicacao"><span jhiTranslate="sbpApp.documento.dataPublicacao">Data Publicacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="createdDate"><span jhiTranslate="global.field.createdDate"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let documento of documentos ;trackBy: trackId">
+                <td>
+                    <div *ngIf="documento.diretorio">
+                        <a [routerLink]="['../diretorio', documento.diretorio?.id, 'view' ]" >{{documento.diretorio?.nome}}</a>
+                    </div>
+                </td>
+                <td>{{documento.dataPublicacao | date:'yyyy'}}</td>
+                <td>{{documento.nome}}</td>
+                <td>{{documento.quantidadePaginas}}</td>
+                <td>{{documento.dataPublicacao | date:'dd/MM/yyyy'}}</td>
+                <td>{{documento.createdDate | date:'dd/MM/yy - HH:mm:ss'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/documento', documento.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'search'"></fa-icon>
+                        </button>
+                        <!-- <button type="submit"
+                                [routerLink]="['/documento', documento.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                        </button> -->
+                        <button type="submit"
+                                [routerLink]="['/', 'documento', { outlets: { popup: documento.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="documentos && documentos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

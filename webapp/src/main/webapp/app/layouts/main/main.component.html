@@ -1,0 +1,17 @@
+<jhi-page-ribbon></jhi-page-ribbon>
+
+<my-processing></my-processing>
+
+<my-global-message></my-global-message>
+
+<div [hidden]="!displayNavbar">
+    <router-outlet name="navbar"></router-outlet>
+</div>
+
+<div class="container-fluid">
+    <div class="card jh-card">
+        <router-outlet></router-outlet>
+        <router-outlet name="popup"></router-outlet>
+    </div>
+    <jhi-footer></jhi-footer>
+</div>

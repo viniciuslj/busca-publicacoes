@@ -1,0 +1,25 @@
+{
+  "sbpApp": {
+    "diretorio": {
+      "home": {
+        "title": "Diretórios",
+        "createLabel": "Criar Diretório",
+        "editLabel": "Editar Diretório"
+      },
+      "created": "O Diretório foi criado",
+      "updated": "O Diretório foi alterado",
+      "deleted": "O Diretório foi excluído",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir o Diretório \"{{ param }}\"?"
+      },
+      "detail": {
+        "title": "Diretório"
+      },
+      "nome": "Nome",
+      "descricao": "Descrição",
+      "restrito": "Restrito",
+      "filtroData": "Filtro por Data",
+      "documento": "Documento"
+    }
+  }
+}

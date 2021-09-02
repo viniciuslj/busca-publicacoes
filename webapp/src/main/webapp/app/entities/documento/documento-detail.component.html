@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documento">
+            <h2>
+                <span jhiTranslate="sbpApp.documento.detail.title">Documento</span>
+
+                <button type="button" (click)="downloadDocumento(documento)"
+                        class="btn btn-danger float-right">
+                    <fa-icon [icon]="'file-pdf'"></fa-icon>&nbsp;
+                    <span jhiTranslate="sbpApp.documento.arquivo"></span>
+                </button>
+            </h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="sbpApp.documento.nome">Nome</span></dt>
+                <dd>
+                    <span>{{documento.nome}}</span>
+                </dd>
+
+                <div *ngIf="documento.descricao">
+                    <dt><span jhiTranslate="sbpApp.documento.descricao">Descricao</span></dt>
+                    <dd>
+                        <span>{{documento.descricao}}</span>
+                    </dd>
+                </div>
+
+                <dt><span jhiTranslate="sbpApp.documento.quantidadePaginas">Quantidade Paginas</span></dt>
+                <dd>
+                    <span>{{documento.quantidadePaginas}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sbpApp.documento.dataPublicacao">Data Publicacao</span></dt>
+                <dd>
+                    <span>{{documento.dataPublicacao | date:'dd/MM/yy'}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sbpApp.documento.processado"></span>
+                    <jhi-boolean [value]="documento.processado"
+                        textTrue="Sim"
+                        textFalse="Não">
+                    </jhi-boolean>
+                </dt>
+                <dd></dd>
+
+                <div *ngIf="documento.erroProcessamento">
+                    <dt><span jhiTranslate="sbpApp.documento.erroProcessamento">Erro Processamento</span></dt>
+                    <dd>
+                        <span>{{documento.erroProcessamento}}</span>
+                    </dd>
+                </div>
+
+                <div *ngIf="documento.createdBy">
+                    <dt><span jhiTranslate="global.field.createdBy"></span></dt>
+                    <dd>
+                        <span>{{documento.createdBy}}</span>
+                    </dd>
+                </div>
+
+                <dt><span jhiTranslate="global.field.createdDate"></span></dt>
+                <dd>
+                    <span>{{documento.createdDate | date:'dd/MM/yy - HH:mm:ss'}}</span>
+                </dd>
+
+                <div *ngIf="documento.lastModifiedBy">
+                    <dt><span jhiTranslate="global.field.lastModifiedBy"></span></dt>
+                    <dd>
+                        <span>{{documento.lastModifiedBy}}</span>
+                    </dd>
+                </div>
+
+                <div *ngIf="documento.lastModifiedDate">
+                    <dt><span jhiTranslate="global.field.lastModifiedDate"></span></dt>
+                    <dd>
+                        <span>{{documento.lastModifiedDate | date:'dd/MM/yy - HH:mm:ss'}}</span>
+                    </dd>
+                </div>
+
+                <dt><span jhiTranslate="sbpApp.documento.diretorio">Diretorio</span></dt>
+                <dd>
+                    <div *ngIf="documento.diretorio">
+                        <a [routerLink]="['/diretorio', documento.diretorio?.id, 'view']">{{documento.diretorio?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <pdf-viewer [src]="arquivoPdf" *ngIf="arquivoPdf"
+                        [render-text]="true"
+                        style="display: block;"
+            ></pdf-viewer>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/documento', documento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

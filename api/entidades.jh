@@ -1,0 +1,75 @@
+/** Postos e Graduações */
+entity Cargo {
+    nome String required,
+    nomeLongo String required,
+    hierarquia Integer required
+}
+
+/** Quadros funcionais */
+entity Quadro {
+    nome String required,
+    nomeLongo String required
+}
+
+/*
+ * Diretório
+ */
+entity Diretorio {
+	nome String required maxlength(50),
+    descricao String,
+    restrito Boolean required,
+    filtroData Boolean required,
+    createdBy String maxlength(11)
+    createdDate Instant required,
+    lastModifiedBy String maxlength(11),
+    lastModifiedDate Instant
+}
+
+/*
+ * Documento
+ */
+entity Documento {
+	nome String required maxlength(50),
+    descricao String,
+    path String required,
+    quantidadePaginas Integer required,
+    dataPublicacao LocalDate,
+    processado Boolean required,
+    erroProcessamento TextBlob,
+    createdBy String maxlength(11)
+    createdDate Instant required,
+    lastModifiedBy String maxlength(11),
+    lastModifiedDate Instant
+}
+
+/*
+ * Página
+ */
+entity Pagina {
+	conteudo TextBlob,
+    numero Integer required
+}
+relationship ManyToOne {
+    Documento{diretorio(nome) required} to Diretorio{documento(nome)}
+    Pagina{documento(nome)} to Documento
+}
+
+/*
+ * Log de Buscas
+ */
+entity LogBusca {
+    conteudoBuscado String required
+    quantidadeEncontrada Integer required
+    tempoMs Long required
+    erro Boolean required
+    erroMsg TextBlob
+    createdDate Instant required
+}
+relationship ManyToOne {
+    LogBusca{user(login)} to User
+}
+
+paginate * with pagination
+service * with serviceClass
+search * with elasticsearch
+

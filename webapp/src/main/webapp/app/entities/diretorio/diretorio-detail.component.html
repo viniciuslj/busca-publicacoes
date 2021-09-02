@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="diretorio">
+            <h2><span jhiTranslate="sbpApp.diretorio.detail.title">Diretorio</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="sbpApp.diretorio.nome">Nome</span></dt>
+                <dd>
+                    <span>{{diretorio.nome}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sbpApp.diretorio.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{diretorio.descricao}}</span>
+                </dd>
+
+                <dt><span jhiTranslate="sbpApp.diretorio.restrito">Restrito</span>
+                    <jhi-boolean [value]="diretorio.restrito"
+                        textTrue="Sim"
+                        textFalse="Não">
+                    </jhi-boolean>
+                </dt>
+                <dd></dd>
+
+                <dt><span jhiTranslate="sbpApp.diretorio.filtroData">Filtro Data</span>
+                    <jhi-boolean [value]="diretorio.filtroData"
+                        textTrue="Sim"
+                        textFalse="Não">
+                    </jhi-boolean>
+                </dt>
+                <dd></dd>
+
+                <div *ngIf="diretorio.createdBy">
+                    <dt><span jhiTranslate="global.field.createdBy"></span></dt>
+                    <dd>
+                        <span>{{diretorio.createdBy}}</span>
+                    </dd>
+                </div>
+
+                <dt><span jhiTranslate="global.field.createdDate"></span></dt>
+                <dd>
+                    <span>{{diretorio.createdDate | date:'dd/MM/yy - HH:mm:ss'}}</span>
+                </dd>
+
+                <div *ngIf="diretorio.lastModifiedBy">
+                    <dt><span jhiTranslate="global.field.lastModifiedBy"></span></dt>
+                    <dd>
+                        <span>{{diretorio.lastModifiedBy}}</span>
+                    </dd>
+                </div>
+
+                <div *ngIf="diretorio.lastModifiedDate">
+                    <dt><span jhiTranslate="global.field.lastModifiedDate"></span></dt>
+                    <dd>
+                        <span>{{diretorio.lastModifiedDate | date:'dd/MM/yy - HH:mm:ss'}}</span>
+                    </dd>
+                </div>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/diretorio', diretorio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

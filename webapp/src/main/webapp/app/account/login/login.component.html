@@ -1,0 +1,34 @@
+<p-confirmDialog #confirmDialog [closeOnEscape]="false" [closable]="false" key="logincomponent">
+    <p-footer>
+        <button type="button" class="btn btn-default btn-sm" (click)="confirmDialog.reject()">
+            {{'login.form.keepSession' | translate}}
+        </button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="confirmDialog.accept()">
+            {{'login.form.restartSession' | translate}}
+        </button>
+    </p-footer>
+</p-confirmDialog>
+
+<div *ngIf="authenticating || msgErro">
+    <div class="bg-principal"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center mb-2">
+            <div>
+                <img src="../../../content/images/logotipo.png">
+            </div>
+
+            <div>
+                <div class="alert alert-danger" *ngIf="msgErro" [innerHTML]="msgErro"></div>
+
+                <div *ngIf="authenticating">
+                    <h2 jhiTranslate="login.messages.info.authenticating"></h2>
+                    <h1>
+                        <!-- <fa-icon icon="spinner" [pulse]="true"></fa-icon> -->
+                        <p-progressBar mode="indeterminate" [style]="{'height': '10px'}"></p-progressBar>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

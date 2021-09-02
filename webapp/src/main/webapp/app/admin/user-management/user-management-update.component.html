@@ -1,0 +1,73 @@
+<div class="card">
+    <div class="card-body">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="myUserLabel" jhiTranslate="userManagement.home.editLabel"></h2>
+            <hr>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <h6>
+                            {{'global.field.id' | translate}}
+                            <span class="badge badge-primary">{{user.id}}</span>
+                            <jhi-boolean
+                                [value]="user.activated"
+                                [textTrue]="'userManagement.activated' | translate"
+                                [textFalse]="'userManagement.deactivated' | translate">
+                            </jhi-boolean>
+                        </h6>
+
+                        <dl class="row-md jh-entity-details">
+                            <dt><span jhiTranslate="userManagement.nome"></span></dt>
+                            <dd>
+                                {{user.nome | titlecase}}<br>
+                                {{user.cargo.nomeLongo}} {{user.quadro.nome}}
+                            </dd>
+
+                            <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+                            <dd>
+                                <span>{{user.login | loginMask}}</span>
+                            </dd>
+
+                            <dt><span jhiTranslate="userManagement.rg"></span></dt>
+                            <dd>
+                                {{user.rg | rgMask}}
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="col-md-6 col-12">
+                        <div class="form-group">
+                            <p-checkbox name="activated" [(ngModel)]="user.activated" binary="true"
+                                [value]="user.activated" label="{{'userManagement.activated' | translate}}"
+                                labelStyleClass="form-check-label">
+                            </p-checkbox>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label jhiTranslate="userManagement.profiles"></label>
+                            <div *ngFor="let authority of authorities">
+                                <p-checkbox name="authority" [value]="authority" [label]="authority"
+                                    labelStyleClass="form-check-label badge badge-warning"
+                                    [(ngModel)]="user.authorities">
+                                </p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <button type="button" class="btn btn-secondary" (click)="previousState()">
+                            <span jhiTranslate="entity.action.cancel"></span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid" class="btn btn-primary">
+                            <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

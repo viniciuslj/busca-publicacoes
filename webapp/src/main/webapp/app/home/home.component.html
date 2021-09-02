@@ -1,0 +1,9 @@
+<div *ngIf="isAuthenticated(); else unauthenticated" class="card">
+    <div class="card-body">
+        <h1>Home</h1>
+    </div>
+</div>
+
+<ng-template #unauthenticated>
+    <my-welcome></my-welcome>
+</ng-template>

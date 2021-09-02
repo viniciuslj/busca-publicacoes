@@ -1,0 +1,17 @@
+{
+  "sbpApp": {
+    "logBusca": {
+      "home": {
+        "title": "Log De Buscas",
+        "search": "Pesquisar"
+      },
+      "conteudoBuscado": "Conteúdo Buscado",
+      "quantidadeEncontrada": "Qtd. Encontrada",
+      "tempoMs": "Tempo",
+      "erro": "Erro",
+      "erroMsg": "Mensagem de Erro",
+      "createdDate": "Data",
+      "user": "Usuário"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "sbpApp": {
+    "cargo": {
+      "home": {
+        "title": "Cargos",
+        "createLabel": "Criar novo Cargo",
+        "createOrEditLabel": "Criar ou editar Cargo",
+        "search": "Pesquisar por Cargo"
+      },
+      "created": "Um novo Cargo foi criado com o identificador {{ param }}",
+      "updated": "Um Cargo foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Cargo foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Cargo {{ id }}?"
+      },
+      "detail": {
+        "title": "Cargo"
+      },
+      "nome": "Nome",
+      "nomeLongo": "Nome Longo",
+      "hierarquia": "Hierarquia"
+    }
+  }
+}

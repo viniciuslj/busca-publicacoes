@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Documento.
+    -->
+    <changeSet id="20190613181527-1" author="jhipster">
+        <createSequence sequenceName="documento_sequence" startValue="1" incrementBy="1"/>
+
+        <createTable tableName="documento">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="nome" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="descricao" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="path" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="quantidade_paginas" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="data_publicacao" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="processado" type="boolean">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="erro_processamento" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(11)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_modified_by" type="varchar(11)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="diretorio_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+
+        <dropDefaultValue tableName="documento" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="documento" columnName="last_modified_date" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="20190613181527-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

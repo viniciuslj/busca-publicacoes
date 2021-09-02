@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-6">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+
+            <h2 id="jhi-documento-heading" jhiTranslate="sbpApp.documento.home.editLabel" *ngIf="documento.id"></h2>
+            <h2 id="jhi-documento-heading" jhiTranslate="sbpApp.documento.home.createLabel" *ngIf="!documento.id"></h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group mt-3 mb-3">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.arquivo" for="field_arquivo"></label>
+                    <input class="form-control-file" type="file" accept="application/pdf" name="arquivo" id="field_arquivo"
+                        (change)="handleFileInput($event.target.files)"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.diretorio" for="field_diretorio"></label>
+                    <select class="form-control" id="field_diretorio" name="diretorio" formControlName="diretorio">
+                        <option *ngIf="!editForm.get('diretorio').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="diretorioOption.id === editForm.get('diretorio').value?.id ? editForm.get('diretorio').value : diretorioOption" *ngFor="let diretorioOption of diretorios; trackBy: trackDiretorioById">{{diretorioOption.nome}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('diretorio').invalid && (editForm.get('diretorio').dirty || editForm.get('diretorio').touched)">
+                        <small class="form-text text-danger"
+                            *ngIf="editForm.get('diretorio').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.nome" for="field_nome"></label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.dataPublicacao" for="field_dataPublicacao"></label>
+                    <div class="input-group">
+                        <input id="field_dataPublicacao" type="text" class="form-control" name="dataPublicacao" ngbDatepicker
+                            #dataPublicacaoDp="ngbDatepicker" formControlName="dataPublicacao"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataPublicacaoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.path" for="field_path"></label>
+                    <input type="text" class="form-control" name="path" id="field_path" formControlName="path"
+                        [value]="editForm.get(['diretorio']).value?.nome + '/'"/>
+                    <div *ngIf="editForm.get('path').invalid && (editForm.get('path').dirty || editForm.get('path').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('path').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.documento.descricao" for="field_descricao"></label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <span jhiTranslate="entity.action.cancel"></span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid" class="btn btn-primary">
+                    <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

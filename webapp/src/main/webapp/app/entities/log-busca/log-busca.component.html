@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="sbpApp.logBusca.home.title">Log Buscas</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'sbpApp.logBusca.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="logBuscas">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="createdDate"><span jhiTranslate="sbpApp.logBusca.createdDate"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="user.login"><span jhiTranslate="sbpApp.logBusca.user"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="conteudoBuscado"><span jhiTranslate="sbpApp.logBusca.conteudoBuscado"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="quantidadeEncontrada"><span jhiTranslate="sbpApp.logBusca.quantidadeEncontrada"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="tempoMs"><span jhiTranslate="sbpApp.logBusca.tempoMs"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="erro"><span jhiTranslate="sbpApp.logBusca.erro"></span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let logBusca of logBuscas ;trackBy: trackId">
+                <td>{{logBusca.createdDate | date:'dd/MM/yy - HH:mm:ss'}}</td>
+                <td>
+                    <a [routerLink]="['/admin/user-management', logBusca.user?.login, 'view']">
+                        {{logBusca.user?.login | loginMask}}
+                    </a>
+                    <br>
+                    <small>{{logBusca.user.cargo.nome}} {{logBusca.user.nome}}</small>
+                </td>
+                <td>{{logBusca.conteudoBuscado}}</td>
+                <td>{{logBusca.quantidadeEncontrada}}</td>
+                <td>{{logBusca.tempoMs / 1000}} s</td>
+                <td>
+                    <jhi-boolean [value]="logBusca.erro" textTrue="Sim" textFalse="Não"></jhi-boolean>
+                    <br>
+                    <small *ngIf="logBusca.erro">{{logBusca.erroMsg}}</small>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="logBuscas && logBuscas.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

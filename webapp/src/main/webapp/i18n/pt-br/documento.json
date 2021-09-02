@@ -1,0 +1,33 @@
+{
+  "sbpApp": {
+    "documento": {
+      "home": {
+        "title": "Documentos",
+        "createLabel": "Adicionar Documento",
+        "batchLabel": "Adicionar Documentos em Lote",
+        "editLabel": "Alterar Dados do Documento"
+      },
+      "created": "O Documento foi adicionado",
+      "updated": "O Documento foi substituído",
+      "deleted": "O Documento foi excluído",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir o Documento \"{{ param }}\"?"
+      },
+      "detail": {
+        "title": "Documento"
+      },
+      "arquivo": "Arquivo PDF",
+      "nome": "Nome",
+      "descricao": "Descrição",
+      "path": "Caminho",
+      "quantidadePaginas": "Qtd. Páginas",
+      "dataPublicacao": "Data Publicação",
+      "anoPublicacao": "Ano",
+      "processado": "Processado",
+      "erroProcessamento": "Erro de Processamento",
+      "diretorio": "Diretório",
+      "batch": "Lote de Doc.",
+      "log": "Log"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<p-dialog #dialog
+    [header]="header"
+    [(visible)]="visible"
+    [maximizable]="true"
+    [baseZIndex]="100000"
+    [modal]="modal"
+    (onShow)="onShow($event, dialog)"
+    (onHide)="onHide()"
+    [style]="{width: '50%', height: '50%'}"
+    >
+
+    <div>
+        <button type="button" (click)="downloadPdf()"
+                class="btn btn-danger float-right">
+            <fa-icon [icon]="'download'"></fa-icon>&nbsp;
+            <span jhiTranslate="entity.action.download"></span>
+        </button>
+    </div>
+
+    <pdf-viewer #pdfViewer
+                [src]="base64data" *ngIf="base64data"
+                [render-text]="true"
+                style="display: block;"
+                (after-load-complete)="afterLoadComplete($event)"
+                [page]="page"
+                [stick-to-page]="false"
+                [show-all]="true"
+                [autoresize]="true"
+                [original-size]="false"
+    >
+    </pdf-viewer>
+</p-dialog>

@@ -1,0 +1,118 @@
+<!-- <div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="user">
+            <h2>
+                <span jhiTranslate="userManagement.detail.title">User</span> [<b>{{user.login}}</b>]
+            </h2>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+                <dd>
+                    <span>{{user.login}}</span>
+                    <jhi-boolean
+                        [value]="user.activated"
+                        [textTrue]="'userManagement.activated' | translate"
+                        [textFalse]="'userManagement.deactivated' | translate">
+                    </jhi-boolean>
+                </dd>
+                <dt><span jhiTranslate="userManagement.firstName">First Name</span></dt>
+                <dd>{{user.firstName}}</dd>
+                <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
+                <dd>{{user.lastName}}</dd>
+                <dt><span jhiTranslate="userManagement.email">Email</span></dt>
+                <dd>{{user.email}}</dd>
+                <dt><span jhiTranslate="userManagement.langKey">Lang Key</span></dt>
+                <dd>{{user.langKey}}</dd>
+                <dt><span jhiTranslate="userManagement.createdBy">Created By</span></dt>
+                <dd>{{user.createdBy}}</dd>
+                <dt><span jhiTranslate="userManagement.createdDate">Created Date</span></dt>
+                <dd>{{user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+                <dt><span jhiTranslate="userManagement.lastModifiedBy">Last Modified By</span></dt>
+                <dd>{{user.lastModifiedBy}}</dd>
+                <dt><span jhiTranslate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
+                <dt><span jhiTranslate="userManagement.profiles">Profiles</span></dt>
+                <dd>
+                    <ul class="list-unstyled">
+                        <li *ngFor="let authority of user.authorities">
+                            <span class="badge badge-info">{{authority}}</span>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+            <button type="submit"
+                    routerLink="../../"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-8 col-lg-6" *ngIf="user">
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+
+                <h3 class="profile-username text-center">
+                    {{user.nome | titlecase}}
+                </h3>
+
+                <p class="text-muted text-center">{{user.cargo.nome}} {{user.quadro.nome}}</p>
+                <p class="text-muted text-center">
+                    <jhi-boolean [value]="user.activated"
+                        [textTrue]="'userManagement.activated' | translate"
+                        [textFalse]="'userManagement.deactivated' | translate">
+                    </jhi-boolean>
+                </p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.login"></b>
+                        <span class="float-right">{{user.login | loginMask}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.rg"></b>
+                        <span class="float-right">{{user.rg | rgMask}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.numeroFuncional"></b>
+                        <span class="float-right">{{user.numeroFuncional}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.email"></b>
+                        <span class="float-right">{{user.email}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.celular"></b>
+                        <span class="float-right">{{user.celular}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.createdDate"></b>
+                        <span class="float-right">{{user.createdDate | date:'dd/MM/yy - HH:mm:ss' }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.lastModifiedDate"></b>
+                        <span class="float-right">{{user.lastModifiedDate | date:'dd/MM/yy - HH:mm:ss' }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <b jhiTranslate="userManagement.profiles"></b>
+                        <span>
+                            <ul class="list-unstyled">
+                                <li *ngFor="let authority of user.authorities">
+                                    <span class="badge badge-secondary">{{authority}}</span>
+                                </li>
+                            </ul>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="row justify-content-end">
+                    <button type="button" class="btn btn-default" (click)="previousState()">
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;
+                        <span jhiTranslate="entity.action.back"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

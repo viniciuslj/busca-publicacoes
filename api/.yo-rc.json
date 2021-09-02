@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "br.gov.es.pm.sbp",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "monolith",
+    "baseName": "sbp",
+    "packageName": "br.gov.es.pm.sbp",
+    "packageFolder": "br/gov/es/pm/sbp",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZWNjNGE3NmFhYjk3ZDgxN2NkMWFlMGIzODQxYWM5NTIxMjcxZWU0MGVkNzU0ZjJkYTg2ZTMxZGI1YjEyMmI1OGU0YmIyYmEwNzc1NDIzYzgxZjg3MTg0MjQ0NGZkNjQ5ODg0MDk2OTFlYzNlOWEyNmJiYTJiMDVkZjdlMmFhMjU=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "pt-br",
+    "languages": [
+      "pt-br"
+    ],
+    "skipClient": true
+  }
+}

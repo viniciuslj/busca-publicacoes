@@ -1,0 +1,26 @@
+{
+  "sbpApp": {
+    "pagina": {
+      "home": {
+        "title": "Paginas",
+        "createLabel": "Criar novo Pagina",
+        "createOrEditLabel": "Criar ou editar Pagina",
+        "search": "Pesquisar nas publicações"
+      },
+      "created": "Um novo Pagina foi criado com o identificador {{ param }}",
+      "updated": "Um Pagina foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Pagina foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Pagina {{ id }}?"
+      },
+      "detail": {
+        "title": "Pagina"
+      },
+      "buscaGeral": "Busca Geral",
+      "conteudo": "Conteúdo",
+      "numero": "Página",
+      "documento": "Documento",
+      "diretorio": "Diretório"
+    }
+  }
+}

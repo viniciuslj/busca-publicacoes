@@ -1,0 +1,33 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Usuários",
+      "createLabel": "Adicionar",
+      "createOrEditLabel": "Criar ou editar usuário"
+    },
+    "created": "Novo usuário foi criado com o identificador {{ param }}",
+    "updated": "Usuário com o identificador {{ param }} foi atualizado ",
+    "deleted": "Usuário com o identificador {{ param }} foi excluído",
+    "delete": {
+      "question": "Você tem certeza que deseja excluir o usuário {{ login }}?"
+    },
+    "detail": {
+      "title": "Usuário"
+    },
+    "login": "CPF",
+    "nome": "Nome",
+    "rg": "RG",
+    "nf": "NF",
+    "numeroFuncional": "Número Funcional",
+    "situacaoRh": "Situação RH",
+    "cargo": "Posto/Grad.",
+    "email": "Email",
+    "celular": "Celular",
+    "unidade": "Unidade",
+    "activated": "Ativo",
+    "deactivated": "Inativo",
+    "profiles": "Perfis",
+    "createdDate": "Criado em",
+    "lastModifiedDate": "Alterado em"
+  }
+}

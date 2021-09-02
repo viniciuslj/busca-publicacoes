@@ -1,0 +1,21 @@
+.box {
+  margin-top: 100px;
+  position: relative;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 1);
+  overflow: visible;
+}
+
+h1,
+h2 {
+  color: #505050;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+}

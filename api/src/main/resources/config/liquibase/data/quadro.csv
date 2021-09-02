@@ -1,0 +1,16 @@
+id;nome;nome_longo
+1;QOC;Oficial Combatente
+2;QOM;Oficial Médico
+3;QOD;Oficial Dentista
+4;QOFB;Oficial Fármaco Bioquímico
+5;QOE;Oficial Enfermeiro
+6;QOMV;Oficial Médico Veterinário
+7;QOMus;Oficial Músico
+8;QOA;Oficial Administrativo
+9;QOAM;Oficial Administrativo Músico
+10;QOAS;Oficial Administrativo Saúde
+11;QPMP-C;Praça Combatente
+12;QPMP-M;Praça Músico
+13;QPMP-S;Praça Especialista Saúde
+14;QPMP1;Praça Manutenção de Armamento
+15;QPMP3;Praça Manutenção Mecânica

@@ -1,0 +1,19 @@
+id;nome;nome_longo;hierarquia
+1;CEL;Coronel;1
+2;TEN CEL;Tenente Coronel;2
+3;MAJ;Major;3
+4;CAP;Capitão;4
+5;1 TEN;Primeiro Tenente;5
+6;2 TEN;Segundo Tenente;6
+7;ASP OF;Aspirante a Oficial;7
+8;AL OF 4;Aluno Oficial 4;8
+9;AL OF 3;Aluno Oficial 3;9
+10;AL OF 2;Aluno Oficial 2;10
+11;AL OF 1;Aluno Oficial 1;11
+12;SUB TEN;Subtenente;12
+13;1 SGT;Primeiro Sargento;13
+14;2 SGT;Segundo Sargento;14
+15;3 SGT;Terceiro Sargento;15
+16;CB;Cabo;16
+17;SD;Soldado;17
+18;AL SD;Aluno Soldado;18

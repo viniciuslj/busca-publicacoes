@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div>
+
+            <pdf-viewer #pdfViewer
+                        [src]="base64data" *ngIf="base64data"
+                        [render-text]="true"
+                        style="display: block;"
+                        (after-load-complete)="afterLoadComplete($event)"
+                        [stick-to-page]="false"
+                        [show-all]="true"
+                        [autoresize]="true"
+                        [original-size]="false"
+            >
+            </pdf-viewer>
+
+            <div class="div-fixed navbar-dark bg-light">
+
+                <button type="button" (click)="exibirExplorerDocumentos()"
+                        class="btn btn-primary float-left ml-2">
+                    <fa-icon [icon]="'sitemap'"></fa-icon>
+                    <!-- &nbsp;
+                    <span jhiTranslate="sbpApp.documento.home.title"></span> -->
+                </button>
+
+                <div *ngIf="documento">
+                    <label>Localizar </label>
+                    <input #queryInput
+                        type="text"
+                        id="query"
+                        [value]="query"
+                        (input)="searchQueryChanged($event.target.value)"
+                        (keyup.enter)="searchQueryChanged(queryInput.value)"
+                    >
+
+                    <label>Páginas de </label>
+                    <p-spinner [(ngModel)]="paginaInicial" [min]="1" [max]="paginaFinal" size="5" [required]="true" name="paginaInicial"
+                        (keyup.enter)="exibirPaginas()"></p-spinner>
+
+                    <label> a </label>
+
+                    <p-spinner [(ngModel)]="paginaFinal" [min]="paginaInicial" [max]="documento.quantidadePaginas" size="5" [required]="true"
+                        name="paginaFinal" (keyup.enter)="exibirPaginas()"></p-spinner>
+
+                    <button type="button" (click)="exibirPaginas()" class="btn btn-secondary"
+                        [disabled]="paginaInicial > paginaFinal || paginaInicial > documento.quantidadePaginas || paginaFinal > documento.quantidadePaginas">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+
+                    <button type="button" (click)="arquivoCompleto()"
+                            class="btn btn-secondary">
+                        <fa-icon [icon]="'file-alt'"></fa-icon>
+                        &nbsp;
+                        <span jhiTranslate="entity.action.full"></span>
+                    </button>
+
+                    <button type="button" (click)="downloadPdf()" class="btn btn-link">
+                        <span jhiTranslate="entity.action.download"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-sidebar [(visible)]="displaySidebar" [blockScroll]="true">
+    <p-tree [value]="filesTree" selectionMode="single" (onNodeSelect)="documentoSelect($event)" styleClass="mt-4"></p-tree>
+    <p-tree [value]="filesTree" selectionMode="single" (onNodeSelect)="documentoSelect($event)" styleClass="mt-4"></p-tree>
+    <p-tree [value]="filesTree" selectionMode="single" (onNodeSelect)="documentoSelect($event)" styleClass="mt-4"></p-tree>
+    <p-tree [value]="filesTree" selectionMode="single" (onNodeSelect)="documentoSelect($event)" styleClass="mt-4"></p-tree>
+</p-sidebar>

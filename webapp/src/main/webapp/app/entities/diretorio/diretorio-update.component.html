@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-md-12 col-lg-6">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+
+            <h2 id="jhi-diretorio-heading" jhiTranslate="sbpApp.diretorio.home.editLabel" *ngIf="diretorio.id"></h2>
+            <h2 id="jhi-diretorio-heading" jhiTranslate="sbpApp.diretorio.home.createLabel" *ngIf="!diretorio.id"></h2>
+
+            <div>
+
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.diretorio.nome" for="field_nome"></label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }">
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sbpApp.diretorio.descricao" for="field_descricao"></label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_restrito" name="restrito" formControlName="restrito">
+                        <label class="custom-control-label" for="field_restrito" jhiTranslate="sbpApp.diretorio.restrito"></label>
+                    </div>
+                    <div *ngIf="editForm.get('restrito').invalid && (editForm.get('restrito').dirty || editForm.get('restrito').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('restrito').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="field_filtroData" name="filtroData" formControlName="filtroData">
+                        <label class="custom-control-label" for="field_filtroData" jhiTranslate="sbpApp.diretorio.filtroData"></label>
+                    </div>
+                    <div *ngIf="editForm.get('filtroData').invalid && (editForm.get('filtroData').dirty || editForm.get('filtroData').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('filtroData').errors.required" jhiTranslate="entity.validation.required">
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <span jhiTranslate="entity.action.cancel"></span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

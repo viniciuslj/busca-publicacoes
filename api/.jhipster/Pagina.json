@@ -1,0 +1,36 @@
+{
+    "name": "Pagina",
+    "fields": [
+        {
+            "fieldName": "conteudo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "numero",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "documento",
+            "otherEntityRelationshipName": "pagina",
+            "relationshipName": "documento",
+            "otherEntityField": "nome"
+        }
+    ],
+    "changelogDate": "20190613181528",
+    "entityTableName": "pagina",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

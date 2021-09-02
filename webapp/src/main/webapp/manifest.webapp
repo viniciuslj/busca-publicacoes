@@ -1,0 +1,16 @@
+{
+  "name": "Sbp",
+  "short_name": "Sbp",
+  "icons": [
+      {
+          "src": "./content/images/logotipo.png",
+          "sizes": "320x295",
+          "type": "image/png"
+      },
+  ],
+  "theme_color": "#000000",
+  "background_color": "#e0e0e0",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait"
+}

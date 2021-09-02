@@ -1,0 +1,23 @@
+{
+  "sbpApp": {
+    "quadro": {
+      "home": {
+        "title": "Quadros",
+        "createLabel": "Criar novo Quadro",
+        "createOrEditLabel": "Criar ou editar Quadro",
+        "search": "Pesquisar por Quadro"
+      },
+      "created": "Um novo Quadro foi criado com o identificador {{ param }}",
+      "updated": "Um Quadro foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Quadro foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Quadro {{ id }}?"
+      },
+      "detail": {
+        "title": "Quadro"
+      },
+      "nome": "Nome",
+      "nomeLongo": "Nome Longo"
+    }
+  }
+}
